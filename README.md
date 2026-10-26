@@ -16,6 +16,30 @@ An offline endless runner built with Lua and LÖVE 11.5. Guide a T-Rex through t
 - **Offline play:** graphics and sound effects are generated in code. Bundled Noto fonts provide accented Latin and Simplified Chinese characters without downloads during play.
 - **Automatic pause:** opening menus or losing window focus pauses an active run.
 
+## Screenshots
+
+Five screenshots captured directly from the running game at 1100 × 680.
+
+**Desert run:** jump over cacti and collect coins.
+
+![The Classic T-Rex jumping over a cactus in the desert, with coins ahead](docs/screenshots/01-desert.png)
+
+**Jungle run:** the scenery changes as the score increases.
+
+![The T-Rex running through the jungle at score 303, with trees, cacti and coins](docs/screenshots/02-jungle.png)
+
+**Snow run:** snowy mountains, falling snow and bird obstacles.
+
+![The T-Rex jumping over a low bird in the snowy environment at score 530](docs/screenshots/03-snow.png)
+
+**Skin collection:** search and browse the fruit costumes.
+
+![The skin collection filtered by fruit, showing colorful T-Rex costumes and pagination](docs/screenshots/04-fruit-skins.png)
+
+**Shared upgrades:** spend collected coins on jump power, coin attraction, score bonuses and a shield.
+
+![The in-game upgrades screen with jump, coin magnet, score and shield purchase options](docs/screenshots/05-upgrades.png)
+
 ## Run from source
 
 Install **LÖVE 11.5** separately, then run this command from the project directory:
