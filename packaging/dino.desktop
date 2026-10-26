@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DINO - Desert Run
+Comment=Jump over cacti and beat your best score
+Exec=Dino %f
+Icon=dino
+Terminal=false
+Categories=Game;ArcadeGame;

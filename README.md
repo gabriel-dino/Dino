@@ -117,6 +117,32 @@ Progress is saved during play and on normal shutdown or focus loss. Desktop and 
 
 This repository contains game source, build scripts, tests, fonts and documentation. **Lua/LÖVE executables, runtime toolchains, `.love` packages, Android APK/AAB files and signing keys are excluded from Git.**
 
+Build all three executable variants on Windows:
+
+```powershell
+.\build.ps1
+```
+
+| Platform | Output |
+| --- | --- |
+| Windows x64 | `dist/Dino-Windows-x64.exe` |
+| Android ARM64 / ARMv7 | `android/dist/Dino-Android.apk` |
+| Linux x86_64 | `dist/Dino-Linux-x86_64.AppImage` |
+
+Each executable has a companion `.sha256` file. Generated packages and cached tools remain outside Git. To rebuild selected platforms, use `.\build.ps1 -Targets Windows,Linux`.
+
+The desktop builder downloads official LÖVE 11.5 distributions and checks pinned SHA-256 hashes. The Windows package is one portable executable: it extracts its embedded game, runtime DLLs and licenses into a unique temporary directory, runs the game, and removes that directory on normal exit. It requires 64-bit Windows with .NET Framework 4.5 or later (included in Windows 10/11); a separate LÖVE installation is unnecessary.
+
+The Linux builder runs on Windows using Git for Windows' MSYS2 runtime, Windows `tar.exe`, and checksum-verified MSYS2 squashfs-tools/liblzo2 packages. It preserves the official AppImage runtime, libraries and licenses, fuses the game into the Linux executable, and preserves Unix permissions and symbolic links through SquashFS pseudo files. On Linux, run `chmod +x Dino-Linux-x86_64.AppImage` before launching it. If FUSE 2 is unavailable, extract with `./Dino-Linux-x86_64.AppImage --appimage-extract` and run `./squashfs-root/AppRun`.
+
+Validate the contents and checksums of all three built packages:
+
+```powershell
+.\packaging\verify.ps1
+```
+
+This checks the packaged modules/fonts against source, Windows architecture and bundled DLLs, Linux runtime and executable architecture, launcher contents, permissions, icon symlink, engine licenses and all three checksums. It needs the desktop build cache and Git for Windows. See [desktop validation notes](packaging/VALIDATION.md) for the scope of runtime testing.
+
 Create the portable LÖVE package on Windows:
 
 ```powershell
@@ -163,6 +189,7 @@ These suites cover gameplay, collisions, missions, upgrades, save migration, cat
 | `conf.lua` | LÖVE window and module configuration |
 | `assets/fonts/` | Bundled Noto fonts and their licenses |
 | `*-tests.lua`, `tests.lua` | Automated checks |
-| `build-love.ps1`, `android/build.ps1` | Local packaging scripts |
+| `build.ps1` | Build Windows, Android and Linux executable packages |
+| `build-love.ps1`, `android/build.ps1`, `packaging/` | Packaging scripts, desktop launchers and package verification |
 
 Font sources and license details are listed in [assets/fonts/SOURCES.md](assets/fonts/SOURCES.md).

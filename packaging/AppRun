@@ -1,0 +1,9 @@
+#!/bin/sh
+if [ -z "$APPDIR" ]; then
+    APPDIR="$(dirname "$(readlink -f "$0")")"
+fi
+export LD_LIBRARY_PATH="$APPDIR/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export XDG_DATA_DIRS="$APPDIR/share/:${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
+export LUA_PATH="$APPDIR/share/luajit-2.1.0-beta3/?.lua;$APPDIR/share/lua/5.1/?.lua;${LUA_PATH:-;}"
+export LUA_CPATH="$APPDIR/lib/lua/5.1/?.so;${LUA_CPATH:-;}"
+exec "$APPDIR/bin/Dino" "$@"

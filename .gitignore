@@ -2,6 +2,7 @@
 /.runtime/
 /.codex/
 /.agents/
+/Agents.md
 
 # Generated game packages and Android distribution files
 *.love
@@ -10,6 +11,8 @@
 *.aab
 *.idsig
 /android/dist/
+/dist/
+*.AppImage
 
 # Executables, compiled Lua and native libraries
 *.exe
