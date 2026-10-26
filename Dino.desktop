@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Dino — Desert Run
+Comment=Jump over cacti and beat your best score
+Exec=/home/vecna/Desktop/Dino/start.sh
+Path=/home/vecna/Desktop/Dino
+Icon=applications-games
+Terminal=false
+Categories=Game;

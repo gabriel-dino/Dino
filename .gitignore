@@ -1,0 +1,36 @@
+# Local runtimes, tools and editor state
+/.runtime/
+/.codex/
+/.agents/
+
+# Generated game packages and Android distribution files
+*.love
+*.love.tmp
+*.apk
+*.aab
+*.idsig
+/android/dist/
+
+# Executables, compiled Lua and native libraries
+*.exe
+*.com
+*.msi
+*.luac
+*.dll
+*.so
+*.so.*
+*.dylib
+*.jar
+*.deb
+
+# Private Android signing material
+*.jks
+*.keystore
+*.password
+
+# Local game saves and logs
+/record.txt
+/progress.txt
+/skin.txt
+/language.txt
+*.log
